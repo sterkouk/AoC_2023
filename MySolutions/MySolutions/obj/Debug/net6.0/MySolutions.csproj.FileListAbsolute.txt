@@ -1,0 +1,15 @@
+D:\VSProjects\AoC\MySolutions\MySolutions\bin\Debug\net6.0\MySolutions.exe
+D:\VSProjects\AoC\MySolutions\MySolutions\bin\Debug\net6.0\MySolutions.deps.json
+D:\VSProjects\AoC\MySolutions\MySolutions\bin\Debug\net6.0\MySolutions.runtimeconfig.json
+D:\VSProjects\AoC\MySolutions\MySolutions\bin\Debug\net6.0\MySolutions.dll
+D:\VSProjects\AoC\MySolutions\MySolutions\bin\Debug\net6.0\MySolutions.pdb
+D:\VSProjects\AoC\MySolutions\MySolutions\obj\Debug\net6.0\MySolutions.csproj.AssemblyReference.cache
+D:\VSProjects\AoC\MySolutions\MySolutions\obj\Debug\net6.0\MySolutions.GeneratedMSBuildEditorConfig.editorconfig
+D:\VSProjects\AoC\MySolutions\MySolutions\obj\Debug\net6.0\MySolutions.AssemblyInfoInputs.cache
+D:\VSProjects\AoC\MySolutions\MySolutions\obj\Debug\net6.0\MySolutions.AssemblyInfo.cs
+D:\VSProjects\AoC\MySolutions\MySolutions\obj\Debug\net6.0\MySolutions.csproj.CoreCompileInputs.cache
+D:\VSProjects\AoC\MySolutions\MySolutions\obj\Debug\net6.0\MySolutions.dll
+D:\VSProjects\AoC\MySolutions\MySolutions\obj\Debug\net6.0\refint\MySolutions.dll
+D:\VSProjects\AoC\MySolutions\MySolutions\obj\Debug\net6.0\MySolutions.pdb
+D:\VSProjects\AoC\MySolutions\MySolutions\obj\Debug\net6.0\MySolutions.genruntimeconfig.cache
+D:\VSProjects\AoC\MySolutions\MySolutions\obj\Debug\net6.0\ref\MySolutions.dll
