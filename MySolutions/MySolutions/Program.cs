@@ -2,5 +2,4 @@
 
 
 Solutions solution = new Solutions();
-int sum = solution.Solution1();
-Console.WriteLine(sum);
+solution.Solution2();
