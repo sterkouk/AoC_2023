@@ -1,0 +1,35 @@
+﻿Explanation for solution 3
+
+
+I create 2 dictionairies one with the containing numbers and one with the special characters
+The key of the dictionairies are the coordinates and the values are the numbers or the characters
+
+BuildNumbers method:
+
+This method takes an array of strings (inputLines) and processes it to extract numerical values and their corresponding coordinates.
+It uses a nested loop to iterate through each character in each line of the input.
+If a digit (excluding '.') is encountered, it starts collecting digits until a non-digit character is found. It then converts the collected digits into an integer.
+The coordinates (row and column) and the corresponding integer value are stored in a dictionary.
+
+BuildSpecialCharacters method:
+
+Similar to BuildNumbers, this method processes the input to extract special characters (non-digit and non-'.') and their coordinates.
+It iterates through each character in each line of the input and stores the coordinates and characters in a dictionary.
+
+GetNumberCoordinates method:
+
+Given a coordinate and a dictionary of numbers, this method returns the coordinates that form the number associated with the input coordinate.
+It checks if the input coordinate exists in the dictionary. If not, it returns an empty enumerable.
+If the coordinate exists, it calculates the number of digits in the associated value and returns a sequence of coordinates accordingly.
+
+NeigbourIsSpecial method:
+
+Given a coordinate and a dictionary of special characters, this method checks if any neighboring coordinates (including diagonals) contain special characters.
+It defines an array of neighboring coordinates and iterates through them, checking if each one exists in the dictionary of special characters.
+
+Part1 method:
+
+It takes dictionaries of numbers and special characters as input.
+It iterates through each entry in the numbers dictionary, calculates the coordinates forming the number, and checks if any neighboring coordinates contain special characters using the NeigbourIsSpecial method.
+If a neighboring coordinate contains a special character, it accumulates the associated number.
+Finally, it prints the accumulative value.

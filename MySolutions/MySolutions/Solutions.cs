@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
 
 public class Solutions
 {
@@ -101,4 +105,110 @@ public class Solutions
         Console.WriteLine(p1);
     }
 
+    //private static string[] inputLines;
+
+    public static void Solution3(string[] inputLines)
+    {
+        
+        Dictionary<Coordinates, int> numbers = BuildNumbers(inputLines);
+        Dictionary<Coordinates, char> specialCharacters = BuildSpecialCharacters(inputLines);
+
+        Part1(numbers, specialCharacters);
+    }
+
+    static Dictionary<Coordinates, int> BuildNumbers(string[] inputLines)
+    {
+        Dictionary<Coordinates, int> numbers = new Dictionary<Coordinates, int>();
+        for (int row = 0; row < inputLines.Length; row++)
+        {
+            var line = inputLines[row];
+            for (int col = 0; col < line.Length; col++)
+            {
+                if (char.IsDigit(line[col]) && line[col] != '.')
+                {
+                    Coordinates coordinates = new Coordinates(row, col);
+                    StringBuilder b = new StringBuilder();
+                    while (col < line.Length && char.IsDigit(line[col]))
+                    {
+                        b.Append(line[col]);
+                        col++;
+                    }
+
+                    numbers[coordinates] = int.Parse(b.ToString());
+                }
+            }
+        }
+        return numbers;
+    }
+
+    static Dictionary<Coordinates, char> BuildSpecialCharacters(string[] inputLines)
+    {
+        Dictionary<Coordinates, char> spCharacters = new Dictionary<Coordinates, char>();
+        for (int row = 0; row < inputLines.Length; row++)
+        {
+            var line = inputLines[row];
+            for (int col = 0; col < line.Length; col++)
+            {
+                char ch = line[col];
+                if (!char.IsDigit(ch) && ch != '.')
+                {
+                    Coordinates coordinates = new Coordinates(row, col);
+                    spCharacters[coordinates] = ch;
+                }
+            }
+        }
+        return spCharacters;
+    }
+
+    static IEnumerable<Coordinates> GetNumberCoordinates(Coordinates coordinate, Dictionary<Coordinates, int> numbers)
+    {
+        if (!numbers.ContainsKey(coordinate))
+        {
+            return Enumerable.Empty<Coordinates>();
+        }
+
+        int numberOfDigits = numbers[coordinate].ToString().Length;
+        return Enumerable.Range(coordinate.Col, numberOfDigits)
+            .Select(col => new Coordinates(coordinate.Row, col));
+    }
+
+    static bool NeigbourIsSpecial(Coordinates coordinate, Dictionary<Coordinates, char> specialCharacters)
+    {
+        Coordinates[] directions = {
+            new Coordinates(coordinate.Row, coordinate.Col - 1), //left
+            new Coordinates(coordinate.Row, coordinate.Col + 1), // right
+            new Coordinates(coordinate.Row - 1, coordinate.Col), // up
+            new Coordinates(coordinate.Row + 1, coordinate.Col), // down
+
+            new Coordinates(coordinate.Row - 1, coordinate.Col - 1), // diagonal-up-left
+            new Coordinates(coordinate.Row - 1, coordinate.Col + 1), // diagonal-up-right
+            new Coordinates(coordinate.Row + 1, coordinate.Col - 1), // diagonal-down-left
+            new Coordinates(coordinate.Row + 1, coordinate.Col + 1), // diagonal-right-down
+        };
+
+        foreach (Coordinates c in directions)
+        {
+            if (specialCharacters.ContainsKey(c))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    static void Part1(Dictionary<Coordinates, int> numbers, Dictionary<Coordinates, char> specialCharacters)
+    {
+        int accumulativeValue = 0;
+        foreach (var (c, number) in numbers)
+        {
+            IEnumerable<Coordinates> numberCoordinates = GetNumberCoordinates(c, numbers);
+            if (numberCoordinates.Any(coord => NeigbourIsSpecial(coord, specialCharacters)))
+            {
+                accumulativeValue += number;
+            }
+        }
+        Console.WriteLine("Accumulative value: " + accumulativeValue);
+    }
+
+    record struct Coordinates(int Row, int Col);
 }
